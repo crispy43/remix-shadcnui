@@ -1,6 +1,7 @@
 import type { MetaFunction } from '@remix-run/node';
 
 import { Theme } from '~/common/constants';
+import { Button } from '~/components/ui/button';
 import { useTheme } from '~/hooks/use-theme';
 
 export const meta: MetaFunction = () => {
@@ -17,9 +18,9 @@ export default function Index() {
         Current theme:&nbsp;
         {theme}
       </p>
-      <button onClick={() => setTheme(theme === Theme.DARK ? Theme.LIGHT : Theme.DARK)}>
+      <Button onClick={() => setTheme(theme === Theme.DARK ? Theme.LIGHT : Theme.DARK)}>
         {theme === Theme.DARK ? Theme.LIGHT : Theme.DARK}
-      </button>
+      </Button>
     </div>
   );
 }
