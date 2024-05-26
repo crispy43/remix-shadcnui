@@ -1,12 +1,7 @@
-@font-face {
-  font-family: 'NanumSquareNeo-Variable';
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
-}
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css');
 
 * {
-  font-family: NanumSquareNeo-Variable, sans-serif !important;
+  font-family: Pretendard Variable, sans-serif !important;
   line-height: 1;
   box-sizing: border-box;
 }
