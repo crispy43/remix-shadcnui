@@ -11,7 +11,6 @@ import { resolveAcceptLanguage } from 'resolve-accept-language';
 
 import globalStyles from '~/styles/global.css?url';
 import resetStyles from '~/styles/reset.css?url';
-import themeStyles from '~/styles/theme.css?url';
 
 import { DEFAULT_LANGUAGE, LANGUAGES } from './common/constants';
 import { getThemeSession } from './controllers/session.server';
@@ -32,11 +31,7 @@ export const loader = async ({ request, context }: LoaderFunctionArgs) => {
 };
 
 export const links: LinksFunction = () => {
-  return [
-    { rel: 'stylesheet', href: resetStyles },
-    { rel: 'stylesheet', href: globalStyles },
-    { rel: 'stylesheet', href: themeStyles },
-  ];
+  return [{ rel: 'stylesheet', href: resetStyles }, { rel: 'stylesheet', href: globalStyles }];
 };
 
 export const App = () => {
