@@ -1,5 +1,5 @@
 {
-  "name": "boutlet-app",
+  "name": "remix-shadcnui-starter",
   "private": true,
   "sideEffects": false,
   "type": "module",

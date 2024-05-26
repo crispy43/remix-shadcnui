@@ -1,5 +1,5 @@
-# Remix Starter
-빌드 환경은 Vite, 배포 환경은 Cloudflare 어뎁터가 적용된 Remix 시작 탬플릿입니다. 라이트&다크 테마가 적용되어 있습니다.
+# Remix shadcn/ui Starter
+[shadcn/ui](https://ui.shadcn.com)와 tailwindcss를 사용하며 빌드 환경은 Vite, 배포 환경은 Cloudflare 어뎁터가 적용된 Remix 시작 탬플릿입니다. 라이트&다크 테마가 적용되어 있습니다.
 
 ## 설치
 로컬에 기본적으로 18버전 이상의 node.js가 설치되어 있어야합니다.
@@ -35,13 +35,13 @@ yarn start
 
 ## 가이드
 ### 환경변수의 사용
-.dev.vars 파일과 클라우드플레어 Pages의 환경변수는 매 요청마다 `context`에 주입됩니다. `process.env.ENV_KEY`와 같은 방법으로 환경변수를 사용할 수 없으므로 아래와 같은 방법으로 사용해야 합니다. 현재 dev 환경과 클라우드플레어 페이지 배포 환경에서 context 객체가 상이한 문제가 있으므로 utils/cloudflare의 `getEnv()`함수를 통해 환경변수를 사용해야 합니다. 클라우드플레어 배포환경에서는 .dev.vars 파일은 사용되지 않으므로 클라우드플레어 대시보드에서 직접 환경변수를 추가하거나 wrangler.toml 파일에 환경변수를 작성해야 합니다.
+.dev.vars 파일과 클라우드플레어 Pages의 환경변수는 매 요청마다 `context`에 주입됩니다. `process.env.ENV_KEY`와 같은 방법으로 환경변수를 사용할 수 없으므로 아래와 같은 방법으로 사용해야 합니다. 현재 dev 환경과 클라우드플레어 페이지 배포 환경에서 context 객체가 상이한 문제가 있으므로 app/lib/cloudflare.ts의 `env()`함수를 통해 환경변수를 사용해야 합니다. 클라우드플레어 배포환경에서는 .dev.vars 파일은 사용되지 않으므로 클라우드플레어 대시보드에서 직접 환경변수를 추가하거나 wrangler.toml 파일에 환경변수를 작성해야 합니다.
 
 ```typescript
-import { getEnv } from '~/utils/cloudflare';
+import { env } from '~/lib/cloudflare';
 
 export const loader = async ({ context }: LoaderFunctionArgs) => {
-  const API_KEY = getEnv(context).API_KEY;
+  const API_KEY = env(context).API_KEY;
   /* ... */
 };
 ```
