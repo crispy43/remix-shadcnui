@@ -1,11 +1,11 @@
-import { ActionFunctionArgs, json } from '@remix-run/cloudflare';
+import { ActionFunctionArgs, json } from '@remix-run/node';
 
 import { Theme } from '~/common/constants';
 import { getThemeSession } from '~/controllers/session.server';
 import { isTheme } from '~/hooks/use-theme';
 
-export const action = async ({ request, context }: ActionFunctionArgs) => {
-  const themeSession = await getThemeSession(request, context);
+export const action = async ({ request }: ActionFunctionArgs) => {
+  const themeSession = await getThemeSession(request);
   const { theme } = await request.json() as { theme: Theme };
 
   if (!isTheme(theme)) {

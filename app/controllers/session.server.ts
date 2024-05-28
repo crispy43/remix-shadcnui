@@ -1,15 +1,14 @@
-import { AppLoadContext, createCookieSessionStorage } from '@remix-run/cloudflare';
+import { createCookieSessionStorage } from '@remix-run/node';
 
 import { Theme } from '~/common/constants';
 import { isTheme } from '~/hooks/use-theme';
-import { env } from '~/lib/cloudflare';
 
-export const getThemeSession = async (request: Request, context: AppLoadContext) => {
+export const getThemeSession = async (request: Request) => {
   const themeStorage = createCookieSessionStorage({
     cookie: {
       name: 'theme',
       secure: true,
-      secrets: [env(context).SESSION_SECRET],
+      secrets: [process.env.SESSION_SECRET ?? ''],
       sameSite: 'lax',
       path: '/',
       httpOnly: true,

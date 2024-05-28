@@ -1,4 +1,4 @@
-import { LinksFunction, LoaderFunctionArgs } from '@remix-run/cloudflare';
+import { LinksFunction, LoaderFunctionArgs } from '@remix-run/node';
 import {
   Links,
   Meta,
@@ -16,13 +16,13 @@ import { DEFAULT_LANGUAGE, LANGUAGES } from './common/constants';
 import { getThemeSession } from './controllers/session.server';
 import { PreventFlashOnWrongTheme, ThemeProvider, useTheme } from './hooks/use-theme';
 
-export const loader = async ({ request, context }: LoaderFunctionArgs) => {
+export const loader = async ({ request }: LoaderFunctionArgs) => {
   const lang = resolveAcceptLanguage(
     request.headers.get('accept-language')!,
     LANGUAGES,
     DEFAULT_LANGUAGE,
   );
-  const { getTheme } = await getThemeSession(request, context);
+  const { getTheme } = await getThemeSession(request);
 
   return {
     lang: lang.split('-')[0],
