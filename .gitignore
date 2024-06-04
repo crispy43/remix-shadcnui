@@ -4,3 +4,7 @@ node_modules
 /build
 .dev.vars
 .eslintcache
+
+.env
+.env.local
+.eslintcache
