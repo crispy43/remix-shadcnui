@@ -10,7 +10,3 @@
 # dotenv environment variable files
 .env
 .env.local
-
-# yarn
-.yarn/install-state.gz
-yarn.lock
