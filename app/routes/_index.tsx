@@ -5,7 +5,10 @@ import { Button } from '~/components/ui/button';
 import { useTheme } from '~/hooks/use-theme';
 
 export const meta: MetaFunction = () => {
-  return [{ title: 'New Remix App' }, { name: 'description', content: 'Welcome to Remix!' }];
+  return [
+    { title: 'New Remix App' },
+    { name: 'description', content: 'Welcome to Remix!' },
+  ];
 };
 
 export default function Index() {

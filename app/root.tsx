@@ -10,7 +10,6 @@ import {
 import { resolveAcceptLanguage } from 'resolve-accept-language';
 
 import globalStyles from '~/styles/global.css?url';
-import resetStyles from '~/styles/reset.css?url';
 
 import { DEFAULT_LANGUAGE, LANGUAGES } from './common/constants';
 import { getThemeSession } from './controllers/session.server';
@@ -24,14 +23,11 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
   );
   const { getTheme } = await getThemeSession(request);
 
-  return {
-    lang: lang.split('-')[0],
-    ssrTheme: getTheme(),
-  };
+  return { lang: lang.split('-')[0], ssrTheme: getTheme() };
 };
 
 export const links: LinksFunction = () => {
-  return [{ rel: 'stylesheet', href: resetStyles }, { rel: 'stylesheet', href: globalStyles }];
+  return [{ rel: 'stylesheet', href: globalStyles }];
 };
 
 export const App = () => {
@@ -39,16 +35,10 @@ export const App = () => {
   const [theme] = useTheme();
 
   return (
-    <html
-      lang={lang}
-      data-theme={theme ?? ''}
-    >
+    <html lang={lang} data-theme={theme ?? ''}>
       <head>
         <meta charSet="utf-8" />
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1"
-        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
         <PreventFlashOnWrongTheme ssrTheme={Boolean(ssrTheme)} />
         <Links />
@@ -66,10 +56,7 @@ export default function AppWithProviders() {
   const { ssrTheme } = useLoaderData<typeof loader>();
 
   return (
-    <ThemeProvider
-      specifiedTheme={ssrTheme}
-      themeAction="/api/theme"
-    >
+    <ThemeProvider specifiedTheme={ssrTheme} themeAction="/api/theme">
       <App />
     </ThemeProvider>
   );

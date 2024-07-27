@@ -1,10 +1,16 @@
-node_modules
-
+# compiled output
 /.cache
+/node_modules
 /build
-.dev.vars
 .eslintcache
 
+# OS
+.DS_Store
+
+# dotenv environment variable files
 .env
 .env.local
-.eslintcache
+
+# yarn
+.yarn/install-state.gz
+yarn.lock

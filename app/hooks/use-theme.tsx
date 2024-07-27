@@ -1,6 +1,14 @@
 import {
-  createContext, Dispatch, MutableRefObject, ReactNode, SetStateAction,
-  useCallback, useContext, useEffect, useRef, useState,
+  createContext,
+  Dispatch,
+  MutableRefObject,
+  ReactNode,
+  SetStateAction,
+  useCallback,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
 } from 'react';
 
 import { Theme } from '~/common/constants';
@@ -31,9 +39,9 @@ function withoutTransition(callback: () => void) {
   }, 0);
 }
 
-export function useCorrectCssTransition(
-  { disableTransitions = false }: {disableTransitions?: boolean} = {},
-) {
+export function useCorrectCssTransition({
+  disableTransitions = false,
+}: { disableTransitions?: boolean } = {}) {
   return useCallback(
     (callback: () => void) => {
       if (disableTransitions) {
@@ -82,16 +90,12 @@ function useChannelEventListener<K extends keyof BroadcastChannelEventMap>(
       channel.addEventListener(event, handler);
       return () => channel.removeEventListener(event, handler);
     }
-  }, [
-    channelRef,
-    event,
-    handler,
-  ]);
+  }, [channelRef, event, handler]);
 }
 
 export const themes: Array<Theme> = Object.values(Theme);
 
-type ThemeContextType = [Theme | null, Dispatch<SetStateAction<Theme | null>>]
+type ThemeContextType = [Theme | null, Dispatch<SetStateAction<Theme | null>>];
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 ThemeContext.displayName = 'ThemeContext';
@@ -105,11 +109,11 @@ export const mediaQuery =
   typeof window !== 'undefined' ? window.matchMedia(prefersLightMQ) : null;
 
 export type ThemeProviderProps = {
-  children: ReactNode
-  specifiedTheme: Theme | null
-  themeAction: string
-  disableTransitionOnThemeChange?: boolean
-}
+  children: ReactNode;
+  specifiedTheme: Theme | null;
+  themeAction: string;
+  disableTransitionOnThemeChange?: boolean;
+};
 
 export function ThemeProvider({
   children,
@@ -139,7 +143,7 @@ export function ThemeProvider({
 
   const mountRun = useRef(false);
 
-  const broadcastThemeChange = useBroadcastChannel('remix-themes', e => {
+  const broadcastThemeChange = useBroadcastChannel('remix-themes', (e) => {
     ensureCorrectTransition(() => {
       setTheme(e.data);
     });
@@ -160,12 +164,7 @@ export function ThemeProvider({
     ensureCorrectTransition(() => {
       broadcastThemeChange(theme);
     });
-  }, [
-    broadcastThemeChange,
-    theme,
-    themeAction,
-    ensureCorrectTransition,
-  ]);
+  }, [broadcastThemeChange, theme, themeAction, ensureCorrectTransition]);
 
   useEffect(() => {
     const handleChange = (ev: MediaQueryListEvent) => {
@@ -178,9 +177,7 @@ export function ThemeProvider({
   }, [ensureCorrectTransition]);
 
   return (
-    <ThemeContext.Provider value={[theme, setTheme]}>
-      {children}
-    </ThemeContext.Provider>
+    <ThemeContext.Provider value={[theme, setTheme]}>{children}</ThemeContext.Provider>
   );
 }
 
@@ -217,9 +214,9 @@ const clientThemeCode = `
 `;
 
 type PreventFlashOnWrongThemeProps = {
-  ssrTheme: boolean
-  nonce?: string
-}
+  ssrTheme: boolean;
+  nonce?: string;
+};
 
 export function PreventFlashOnWrongTheme({
   ssrTheme,
