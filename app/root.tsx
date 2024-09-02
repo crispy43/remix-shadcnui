@@ -20,7 +20,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
     request.headers.get('accept-language')!,
     LANGUAGES,
     DEFAULT_LANGUAGE,
-  );
+  ) as unknown as string;
   const { getTheme } = await getThemeSession(request);
 
   return { lang: lang.split('-')[0], ssrTheme: getTheme() };

@@ -7315,7 +7315,7 @@ __metadata:
     prettier: "npm:^2.8.8"
     react: "npm:^18.3.0-canary-c3048aab4-20240326"
     react-dom: "npm:^18.3.0-canary-c3048aab4-20240326"
-    resolve-accept-language: "npm:^3.1.4"
+    resolve-accept-language: "npm:^3.1.6"
     tailwind-merge: "npm:^2.4.0"
     tailwindcss: "npm:^3.4.4"
     tailwindcss-animate: "npm:^1.0.7"
@@ -7332,10 +7332,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"resolve-accept-language@npm:^3.1.4":
-  version: 3.1.4
-  resolution: "resolve-accept-language@npm:3.1.4"
-  checksum: 10c0/ca7be9816bb27304f1c0a1991ce356ad230447b4bfe9091bd913963e3997a2496b2fb8a0dbf3c7996912967eccc4d6b859b741b9a879a8afb13dbd0574b14d59
+"resolve-accept-language@npm:^3.1.6":
+  version: 3.1.6
+  resolution: "resolve-accept-language@npm:3.1.6"
+  checksum: 10c0/af4c9c4e135e8cacbeea6609f8e2042133092563d77c8fb63b9e09b79cc8c170cc0eb8453a02b8a15ccf3237a6d2cd4402831eda6573d53322213d1d40005230
   languageName: node
   linkType: hard
 

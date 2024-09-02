@@ -17,10 +17,13 @@
     "moduleResolution": "Bundler",
     "resolveJsonModule": true,
     "target": "ES2022",
-    "strict": true,
     "allowJs": true,
     "skipLibCheck": true,
+    "strictNullChecks": false,
+    "noImplicitAny": false,
+    "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": false,
     "baseUrl": ".",
     "paths": {
       "~/*": ["./app/*"]

@@ -22,7 +22,7 @@
     "isbot": "^4.1.0",
     "react": "^18.3.0-canary-c3048aab4-20240326",
     "react-dom": "^18.3.0-canary-c3048aab4-20240326",
-    "resolve-accept-language": "^3.1.4",
+    "resolve-accept-language": "^3.1.6",
     "tailwind-merge": "^2.4.0",
     "tailwindcss-animate": "^1.0.7"
   },

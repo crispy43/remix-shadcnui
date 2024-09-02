@@ -22,7 +22,7 @@ module.exports = {
   ignorePatterns: ['!**/.server', '!**/.client'],
 
   // Base config
-  extends: ['eslint:recommended', 'prettier'],
+  extends: ['plugin:@typescript-eslint/recommended'],
   plugins: ['simple-import-sort', 'unused-imports'],
 
   overrides: [
@@ -103,6 +103,8 @@ module.exports = {
 
   // Custom rules
   rules: {
+    'simple-import-sort/imports': 'error',
+    'simple-import-sort/exports': 'error',
     'no-console': [
       'warn',
       {
