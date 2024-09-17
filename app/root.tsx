@@ -17,7 +17,7 @@ import { getLang } from './lib/localization';
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   const lang = getLang(request);
   const { getTheme } = await getThemeSession(request);
-  return { lang: lang.split('-')[0], ssrTheme: getTheme() };
+  return { lang, ssrTheme: getTheme() };
 };
 
 export const links: LinksFunction = () => {
