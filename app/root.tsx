@@ -7,22 +7,16 @@ import {
   ScrollRestoration,
   useLoaderData,
 } from '@remix-run/react';
-import { resolveAcceptLanguage } from 'resolve-accept-language';
 
 import globalStyles from '~/styles/global.css?url';
 
-import { DEFAULT_LANGUAGE, LANGUAGES } from './common/constants';
 import { getThemeSession } from './controllers/session.server';
 import { PreventFlashOnWrongTheme, ThemeProvider, useTheme } from './hooks/use-theme';
+import { getLang } from './lib/localization';
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
-  const lang = resolveAcceptLanguage(
-    request.headers.get('accept-language')!,
-    LANGUAGES,
-    DEFAULT_LANGUAGE,
-  ) as unknown as string;
+  const lang = getLang(request);
   const { getTheme } = await getThemeSession(request);
-
   return { lang: lang.split('-')[0], ssrTheme: getTheme() };
 };
 
