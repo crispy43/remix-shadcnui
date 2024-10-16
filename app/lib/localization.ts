@@ -5,12 +5,14 @@ import { DEFAULT_LANGUAGE, LANGUAGES } from '~/common/constants';
 // * lang 코드
 export const getLang = (request: Request) => {
   return (
-    resolveAcceptLanguage(
-      request.headers.get('accept-language')!,
-      LANGUAGES,
-      DEFAULT_LANGUAGE,
-    ) as unknown as string
-  ).split('-')[0];
+    (
+      resolveAcceptLanguage(
+        request.headers.get('accept-language')!,
+        LANGUAGES,
+        DEFAULT_LANGUAGE,
+      ) as unknown as string
+    )?.split('-')[0] ?? DEFAULT_LANGUAGE
+  );
 };
 
 // * 현지화 번역 언어셋
