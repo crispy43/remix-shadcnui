@@ -1,11 +1,11 @@
 import {
   createContext,
   Dispatch,
-  MutableRefObject,
   ReactNode,
+  RefObject,
   SetStateAction,
+  use,
   useCallback,
-  useContext,
   useEffect,
   useRef,
   useState,
@@ -79,7 +79,7 @@ export function useBroadcastChannel<T = string>(
 }
 
 function useChannelEventListener<K extends keyof BroadcastChannelEventMap>(
-  channelRef: MutableRefObject<BroadcastChannel | null>,
+  channelRef: RefObject<BroadcastChannel | null>,
   event: K,
   handler: (e: BroadcastChannelEventMap[K]) => void = () => {},
 ) {
@@ -186,10 +186,8 @@ const clientThemeCode = `
   const theme = window.matchMedia(${JSON.stringify(prefersLightMQ)}).matches
     ? 'light'
     : 'dark';
-  
   const cl = document.documentElement.classList;
   const dataAttr = document.documentElement.dataset.theme;
-
   if (dataAttr != null) {
     const themeAlreadyApplied = dataAttr === 'light' || dataAttr === 'dark';
     if (!themeAlreadyApplied) {
@@ -201,7 +199,6 @@ const clientThemeCode = `
       cl.add(theme);
     }
   }
-  
   const meta = document.querySelector('meta[name=color-scheme]');
   if (meta) {
     if (theme === 'dark') {
@@ -253,7 +250,7 @@ export function PreventFlashOnWrongTheme({
 }
 
 export function useTheme() {
-  const context = useContext(ThemeContext);
+  const context = use(ThemeContext);
 
   if (context === undefined) {
     throw new Error('useTheme must be used within a ThemeProvider');

@@ -10,14 +10,13 @@ import {
 
 import globalStyles from '~/styles/global.css?url';
 
-import { getThemeSession } from './controllers/session.server';
+import { getLanguageSession, getThemeSession } from './.server/services/session';
 import { PreventFlashOnWrongTheme, ThemeProvider, useTheme } from './hooks/use-theme';
-import { getLang } from './lib/localization';
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
-  const lang = getLang(request);
+  const { getLanguage } = await getLanguageSession(request);
   const { getTheme } = await getThemeSession(request);
-  return { lang, ssrTheme: getTheme() };
+  return { lang: getLanguage(), ssrTheme: getTheme() };
 };
 
 export const links: LinksFunction = () => {

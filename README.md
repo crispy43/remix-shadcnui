@@ -1,6 +1,6 @@
 # Remix shadcn/ui Starter
 
-[shadcn/ui](https://ui.shadcn.com)와 tailwindcss를 사용하며 빌드 환경은 Vite가 적용된 Remix 시작 탬플릿입니다. 라이트&다크 테마가 적용되어 있습니다.
+[shadcn/ui](https://ui.shadcn.com)와 tailwindcss를 사용하며 빌드 환경은 Vite가 적용된 Remix 시작 탬플릿입니다. 언어 현지화 기능과 라이트&다크 테마 변경 기능이 적용되어 있습니다.
 
 ## 설치
 

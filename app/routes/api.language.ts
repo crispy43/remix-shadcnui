@@ -1,7 +1,7 @@
 import { ActionFunctionArgs } from '@remix-run/node';
 
-import { updateTheme } from '~/.server/controllers/theme.controller';
+import { updateLanguage } from '~/.server/controllers/language.controller';
 
 export const action = async ({ request }: ActionFunctionArgs) => {
-  return updateTheme(request);
+  return updateLanguage(request);
 };
