@@ -10,7 +10,7 @@ import {
 
 import globalStyles from '~/styles/global.css?url';
 
-import { getThemeSession } from './controllers/session.server';
+import { getThemeSession } from './.server/session';
 import { PreventFlashOnWrongTheme, ThemeProvider, useTheme } from './hooks/use-theme';
 import { getLang } from './lib/localization';
 

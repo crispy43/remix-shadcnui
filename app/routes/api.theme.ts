@@ -1,7 +1,7 @@
 import { ActionFunctionArgs, json } from '@remix-run/node';
 
+import { getThemeSession } from '~/.server/session';
 import { Theme } from '~/common/constants';
-import { getThemeSession } from '~/controllers/session.server';
 import { isTheme } from '~/hooks/use-theme';
 
 export const action = async ({ request }: ActionFunctionArgs) => {

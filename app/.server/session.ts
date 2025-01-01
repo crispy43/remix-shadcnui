@@ -3,6 +3,7 @@ import { createCookieSessionStorage } from '@remix-run/node';
 import { Theme } from '~/common/constants';
 import { isTheme } from '~/hooks/use-theme';
 
+// * 테마 세션
 export const getThemeSession = async (request: Request) => {
   const themeStorage = createCookieSessionStorage({
     cookie: {
