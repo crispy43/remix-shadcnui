@@ -4,6 +4,7 @@ import { useLoaderData } from '@remix-run/react';
 import { localize } from '~/.server/lib/localization';
 import { Theme } from '~/common/constants';
 import { Button } from '~/components/ui/button';
+import { useLanguage } from '~/hooks/use-language';
 import { useTheme } from '~/hooks/use-theme';
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
@@ -18,18 +19,30 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
 
 export default function Index() {
   const { t } = useLoaderData<typeof loader>();
+  const [language, setLanguage] = useLanguage();
   const [theme, setTheme] = useTheme();
 
   return (
-    <div style={{ padding: '2rem' }}>
-      <h1>{t.welcome}</h1>
-      <p>
-        Current theme:&nbsp;
-        {theme}
-      </p>
-      <Button onClick={() => setTheme(theme === Theme.DARK ? Theme.LIGHT : Theme.DARK)}>
-        {theme === Theme.DARK ? Theme.LIGHT : Theme.DARK}
-      </Button>
+    <div className="flex flex-col items-center justify-center h-screen space-y-4">
+      <h1 className="text-xl font-bold">{t.welcome}</h1>
+      <div>
+        <p>
+          Current language:&nbsp;
+          {language}
+        </p>
+        <Button onClick={() => setLanguage(language === 'en' ? 'ko' : 'en')}>
+          {language === 'en' ? 'ko' : 'en'}
+        </Button>
+      </div>
+      <div>
+        <p>
+          Current theme:&nbsp;
+          {theme}
+        </p>
+        <Button onClick={() => setTheme(theme === Theme.DARK ? Theme.LIGHT : Theme.DARK)}>
+          {theme === Theme.DARK ? Theme.LIGHT : Theme.DARK}
+        </Button>
+      </div>
     </div>
   );
 }

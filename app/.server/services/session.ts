@@ -19,7 +19,7 @@ export const getLanguageSession = async (request: Request) => {
   const session = await languageStorage.getSession(request.headers.get('Cookie'));
   return {
     getLanguage: () => {
-      const langValue = session.get('language');
+      const langValue = session.get('language') as string;
       return isLanguage(langValue) ? langValue : getAcceptLanguage(request);
     },
     setLanguage: (language: string) => session.set('language', language),
